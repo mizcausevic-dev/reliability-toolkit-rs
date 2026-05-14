@@ -1,7 +1,7 @@
 # reliability-toolkit
 
 [![CI](https://github.com/mizcausevic-dev/reliability-toolkit-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/mizcausevic-dev/reliability-toolkit-rs/actions/workflows/ci.yml)
-[![Rust](https://img.shields.io/badge/rust-1.75%2B-orange)](https://www.rust-lang.org/)
+[![Rust](https://img.shields.io/badge/rust-1.85%2B-orange)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Async reliability primitives for Tokio-based Rust services**: token-bucket rate limiter, 3-state circuit breaker, exponential backoff with full jitter, and a semaphore-backed bulkhead. Small, composable, no surprises.
@@ -150,7 +150,7 @@ cargo clippy --all-targets -- -Dwarnings
 cargo fmt --all -- --check
 ```
 
-CI runs the matrix `stable`, `beta`, and `1.75.0` (MSRV).
+CI runs the matrix `stable`, `beta`, and `1.85.0` (MSRV).
 
 ---
 
