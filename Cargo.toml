@@ -1,0 +1,30 @@
+[package]
+name        = "reliability-toolkit"
+version     = "0.1.0"
+edition     = "2021"
+rust-version = "1.75"
+description = "Async reliability primitives for Rust: rate limiter, circuit breaker, retry with jitter, bulkhead."
+license     = "MIT"
+repository  = "https://github.com/mizcausevic-dev/reliability-toolkit-rs"
+homepage    = "https://kineticgain.com/"
+documentation = "https://docs.rs/reliability-toolkit"
+readme      = "README.md"
+keywords    = ["reliability", "rate-limit", "circuit-breaker", "retry", "tokio"]
+categories  = ["asynchronous", "network-programming", "concurrency"]
+authors     = ["Miz Causevic <miz@kineticgain.com>"]
+
+[dependencies]
+tokio = { version = "1.38", features = ["sync", "time", "macros", "rt"] }
+thiserror = "1.0"
+
+[dev-dependencies]
+tokio = { version = "1.38", features = ["full", "test-util"] }
+criterion = { version = "0.5", features = ["async_tokio"] }
+
+[[bench]]
+name = "rate_limiter"
+harness = false
+
+[lib]
+name = "reliability_toolkit"
+path = "src/lib.rs"
