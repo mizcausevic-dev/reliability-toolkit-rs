@@ -65,8 +65,16 @@ pub mod error;
 pub mod rate_limiter;
 pub mod retry;
 
+/// Optional audit-stream-py producer. Gated behind the `audit-stream`
+/// Cargo feature so the core toolkit stays HTTP-free.
+#[cfg(feature = "audit-stream")]
+pub mod audit_stream;
+
 pub use bulkhead::{Bulkhead, BulkheadPermit};
 pub use circuit_breaker::{CircuitBreaker, CircuitBreakerBuilder, CircuitState};
 pub use error::ToolkitError;
 pub use rate_limiter::RateLimiter;
 pub use retry::{Retry, RetryConfig};
+
+#[cfg(feature = "audit-stream")]
+pub use audit_stream::AuditingBreaker;

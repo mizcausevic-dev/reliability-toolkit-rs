@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        toolchain: [stable, beta, "1.85.0"]
+        toolchain: [stable, beta, "1.88.0"]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
@@ -42,3 +42,11 @@ jobs:
 
       - name: Doc tests
         run: cargo test --doc
+
+      - name: Clippy (audit-stream feature)
+        if: matrix.toolchain == 'stable'
+        run: cargo clippy --features audit-stream --all-targets -- -Dwarnings
+
+      - name: Test (audit-stream feature)
+        if: matrix.toolchain == 'stable'
+        run: cargo test --features audit-stream --all-targets
